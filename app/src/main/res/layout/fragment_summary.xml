@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SummaryFragment">
+  <data>
+
+      <variable
+          name="viewModel"
+          type="com.example.orderingapp.OrderViewModel" />
+  </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/side_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/quantity_label"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quantity"
+                    android:textAllCaps="true"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/order_summary_margin"
+                    android:text="@{viewModel.quantity.toString()}"
+                    tools:text="6 burgers" />
+
+                <View
+                    android:id="@+id/divider1"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/side_margin"
+                    android:layout_marginBottom="@dimen/side_margin" />
+
+                <TextView
+                    android:id="@+id/flavor_label"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/flavor" />
+
+                <TextView
+                    android:id="@+id/flavor"
+                    android:text="@{viewModel.flavor}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/order_summary_margin"
+                    tools:text="Chicken " />
+
+                <View
+                    android:id="@+id/divider2"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/side_margin"
+                    android:layout_marginBottom="@dimen/side_margin" />
+
+                <TextView
+                    android:id="@+id/pickup_label"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pickup_date" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:text="@{viewModel.date}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/order_summary_margin"
+                    tools:text="Sunday" />
+
+                <View
+                    android:id="@+id/divider3"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/side_margin"
+                    android:layout_marginBottom="@dimen/margin_between_elements" />
+
+                <TextView
+                    android:id="@+id/total"
+                    android:text="@{@string/total_price(viewModel.price)}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/side_margin"
+                    tools:text="Total ₹0" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/send_button"
+                android:onClick="@{() -> summaryFragment.sendOrder()}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/side_margin"
+                android:text="@string/send"
+                app:backgroundTint="#8E6F11"/>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
